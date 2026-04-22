@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "include": [
+        "/*"
+    ],
+    "exclude": [
+        "/login",
+        "/register",
+        "/assets/*",
+        "/js/*",
+        "/styles/*"
+    ]
+}

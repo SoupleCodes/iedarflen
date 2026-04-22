@@ -1,0 +1,56 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+</head>
+<body bgcolor="#C0C0C0">
+    <table id="nav" border="0" cellspacing="0" cellpadding="0" width="640" height="40">
+        <tbody><tr><td valign="top" width="200"><h1>[ iedarflen ]</h1></td><td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="30">
+        <tbody>
+          <tr>
+            <td valign="top" width="75"><h3>[ <a href="/">home</a> ]</h3></td><td valign="top" width="90"><h3>[ <a href="/">explore</a> ]</h3></td>
+          <td valign="top" align="right"><h3>[ <a href="/">login</a> - <a href="/">register</a> ]</h3></td></tr>
+        </tbody>
+      </table></td></tr></tbody>
+    </table>
+    <table border="0" cellspacing="0" cellpadding="30" id="content" width="100%"><tbody><tr><td valign="top" width="200"><table border="0" cellspacing="0" cellpadding="0" width="200">
+      <tbody id="stats">
+        <tr height="20">
+          <td>
+            <h3>[ top 15 users ]</h3>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="/user/souple">~souple</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+  <td valign="top">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" id="posts">
+      <tbody>
+        <tr height="30" id="filter-posts" valign="top" align="right">
+          <td>
+            <h3>sort by [ <a id="selected" style="font-weight:bold" onclick="updatePostsIframe('recent',this);event.returnValue = false;return false;" href="#">recent</a> - <a onclick="updatePostsIframe('popular',this);event.returnValue = false;return false;" href="#">popular</a> - <a onclick="updatePostsIframe('loved',this);event.returnValue = false;return false;" href="#">loved</a> - <a onclick="updatePostsIframe('trending',this);event.returnValue = false;return false;" href="#">trending</a> ]</h3>
+          </td>
+        </tr>
+        <tr id="page-posts">
+          <td>
+            <iframe frameborder="0" width="100%" height="500" src="/posts&filterby=recent"></iframe>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+    </table>
+    <table border="0" cellspacing="0" cellpadding="0" height="50" id="footer" width="100%">
+      <tbody>
+        <tr height="50"><td valign="bottom"><hr></td></tr><tr>
+          <td width="75" valign="bottom">© 2021-2026 Darflen</td>
+        </tr>
+      <tr height="24"><td>[ <a href="/tos">Terms of Service</a> - <a href="privacy">Privacy Policy</a> - <a href="/contact">Contact no one</a> ]</td></tr></tbody>
+    </table>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>

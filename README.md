@@ -1,3 +1,1 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
-
-Learn more at https://developers.google.com/idx/guides/customize-idx-env
+This is a darflen client built for legacy browsers (ie5 and above!)# iedarflen
