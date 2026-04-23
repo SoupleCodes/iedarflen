@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"pages": "npx wrangler pages dev ./public",
-		"deploy": "wrangler deploy --assets=./public",
+		"deploy": "wrangler pages deploy",
 		"tail": "wrangler tail",
 		"cf-typegen": "wrangler types"
 	},

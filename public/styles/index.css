@@ -20,7 +20,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -49,7 +48,7 @@ table {
 pre {
 	word-wrap: break-word;
 }
-#post-content td {
+#profile-info td, #post-content td {
 	white-space: break-spaces;
 }
 

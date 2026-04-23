@@ -32,9 +32,17 @@ export async function onRequest(context) {
             const url = request.url
             const searchParams = new URLSearchParams(url)
             const filterby = searchParams.get("filterby")
+            const origin = searchParams.get("origin")
+            const originID = searchParams.get("origin_id")
 
-            var postsRes = await httpFetch('/explore/' + filterby + '/get/1', 'GET')
-            var posts = postsRes.posts
+            var postsRes
+            if (origin == "user") {
+                postsRes = await httpFetch('/users/' + originID + '/posts', 'GET')
+            } else {
+                postsRes = await httpFetch('/explore/' + filterby + '/get/1', 'GET')
+            }
+
+            var posts = postsRes.posts.slice(0,25)
             var html = '<head><link rel="stylesheet" type="text/css" href="/styles/index.css"></head>'
             for (let i = 0; i < posts.length; i++) {
                 let post = posts[i]
