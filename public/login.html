@@ -2,7 +2,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
 </head>
 <body bgcolor="#C0C0C0">
-    <table id="nav" border="0" cellspacing="0" cellpadding="0" width="100%" height="40">
+      <table id="nav" border="0" cellspacing="0" cellpadding="0" width="100%" height="40">
         <tbody><tr><td valign="top" width="204"><h1>[ iedarflen ]</h1></td><td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="30">
         <tbody>
           <tr>
@@ -15,31 +15,23 @@
       </table></td></tr></tbody>
     </table>
     <table border="0" cellspacing="0" cellpadding="0" id="content" width="100%"><tbody><tr><td valign="top" width="200"><table border="0" cellspacing="0" cellpadding="0" width="200">
-      <tbody id="stats">
-        <tr height="20">
-          <td>
-            <h3>[ top 15 users ]</h3>
-          </td>
-        </tr>
+      <tbody>
         <tr>
           <td>
-            <a target="_blank" href="/user/souple">~souple</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </td>
-  <td valign="top">
-    <table border="0" cellspacing="0" cellpadding="0" width="100%" id="posts">
-      <tbody>
-        <tr height="30" id="filter-posts" valign="top" align="right">
-          <td>
-            <h3>sort by [ <a target="_blank" id="selected" style="font-weight:bold" onclick="updatePostsIframe('recent',this);event.returnValue = false;return false;" href="#">recent</a> - <a target="_blank" onclick="updatePostsIframe('popular',this);event.returnValue = false;return false;" href="#">popular</a> - <a target="_blank" onclick="updatePostsIframe('loved',this);event.returnValue = false;return false;" href="#">loved</a> - <a target="_blank" onclick="updatePostsIframe('trending',this);event.returnValue = false;return false;" href="#">trending</a> ]</h3>
-          </td>
-        </tr>
-        <tr id="page-posts">
-          <td>
-            <iframe TARGET="_BLANK" MARGINWIDTH="0" MARGINHEIGHT="0" FRAMEBORDER="0" WIDTH="100%" HEIGHT="500" SRC="/posts&filterby=recent"></iframe>
+            <table border="0" cellspacing="20" cellpadding="20" id="content" width="100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <form method="POST" action="/auth&r=login">
+                                <pre>Email                      <input name="email" maxlength="30" size="31">
+Password                <input type="password" name="password" maxlength="30" size="31"> 
+                                                                                     <input size="50" type="submit" value="Continue">
+                                </pre>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
           </td>
         </tr>
       </tbody>

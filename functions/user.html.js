@@ -1,4 +1,5 @@
-import { httpFetch } from "./[[index]]";
+import { updatePageWithCookie } from "../cookie";
+import { escapeHTML, httpFetch } from "./[[index]]";
 
 export async function onRequest(context) {
     const { request, env } = context
@@ -30,7 +31,7 @@ export async function onRequest(context) {
                     el.append('&origin_id=' + user.profile.username, { ContentOptions: 'after'})
                     el.append('"></iframe>', { html: true, ContentOptions: 'after'})
                 } else {
-                    el.setInnerContent(user.profile.description)
+                    el.setInnerContent(escapeHTML(user.profile.description).replaceAll("\n", "<br/>"), { html: true })
                 }
             }
         })
@@ -78,7 +79,6 @@ export async function onRequest(context) {
 
                 // If user has links
                 var links = user.profile.links
-                console.log(links.length)
                 if (links && Array.isArray(links) && (links.length > 0)) {
                     el.append('<tr valign="bottom" height="30"><td><h3>[ my links ]</h3></td></tr>', { html: true })
                     for (let i = 0; i < links.length; i++) {
@@ -95,5 +95,6 @@ export async function onRequest(context) {
         })
     }
 
+    updatePageWithCookie(request, rewriter)
     return rewriter.transform(response)
 }

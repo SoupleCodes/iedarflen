@@ -1,0 +1,97 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+</head>
+<body bgcolor="#C0C0C0">
+      <table id="nav" border="0" cellspacing="0" cellpadding="0" width="100%" height="40">
+        <tbody><tr><td valign="top" width="204"><h1>[ iedarflen ]</h1></td><td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" height="30">
+        <tbody>
+          <tr>
+            <td valign="top" width="75"><h3>[ <a href="/">home</a> ]</h3></td>
+            <td valign="top" width="90"><h3>[ <a href="/">explore</a> ]</h3></td>
+            <td valign="top" width="270" align="right"><h3>[ <a href="/login">login</a> - <a href="/register">register</a> ]</h3></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table></td></tr></tbody>
+    </table>
+    <table border="0" cellspacing="0" cellpadding="0" id="content" width="100%"><tbody><tr><td valign="top" width="200"><table border="0" cellspacing="0" cellpadding="0" width="200">
+      <tbody>
+        <tr>
+          <td>
+            <table border="0" cellspacing="20" cellpadding="20" id="content" width="100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <form onsubmit="event.returnValue=false;return false;" method="POST" action="/auth&r=register">
+                                <pre>Email                      <input name="email" maxlength="30" size="31">
+Username               <input name="username" maxlength="30" size="31"> 
+Password                <input type="password" name="password" maxlength="30" size="31">
+Type again:             <input type="password" name="password" maxlength="30" size="31"><br/>
+Birthdate               <select name="month" id="month">
+	<option value="1">Jan</option>
+	<option value="2">Feb</option>
+	<option value="3">Mar</option>
+	<option value="4">Apr</option>
+	<option selected="selected" value="5">May</option>
+	<option value="6">Jun</option>
+	<option value="7">Jul</option>
+	<option value="8">Aug</option>
+	<option value="9">Sep</option>
+	<option value="10">Oct</option>
+	<option value="11">Nov</option>
+	<option value="12">Dec</option></select><select name="day" id="day">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option selected="selected" value="30">30</option>
+	<option value="31">31</option></select><input name="year" id="year" value="2000" type="dropdown" maxlength="4" minlength="4" size="4"/><br/> 
+                                                                                     <input size="50" type="submit" value="Continue" onclick="event.preventDefault();var inputs=document.forms[0].children[0].children;if(inputs[2].value==inputs[3].value){document.forms[0].submit()}else if(!inputs[2].value||!inputs[3].value){alert('Password field(s) are empty.')}else{alert('*BUZZER* The password fields do not match. Try again...')}">
+                                </pre>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+    </table>
+    <table border="0" cellspacing="0" cellpadding="0" height="50" id="footer" width="100%">
+      <tbody>
+        <tr height="50"><td valign="bottom"><hr></td></tr><tr>
+          <td valign="bottom">© 2021-2026 Darflen</td>
+        </tr>
+      <tr height="24"><td>[ <a target="_blank" href="/tos">Terms of Service</a> - <a target="_blank" href="privacy">Privacy Policy</a> - <a target="_blank" href="/contact">Contact no one</a> ]</td></tr></tbody>
+    </table>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>

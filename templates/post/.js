@@ -1,6 +1,7 @@
+import { escapeHTML } from "../../functions/[[index]]";
 import html from "../post/.html";
 
-export async function returnPostBody(id, content, author, author_id, view_count, date, comment_count) {
+export async function returnPostBody(id, content, author, author_id, view_count, date, comment_count, status) {
     const response = new Response(html)
 
     return new HTMLRewriter()
@@ -11,13 +12,13 @@ export async function returnPostBody(id, content, author, author_id, view_count,
         })
         .on('#post-content td', {
             element(el) {
-                el.setInnerContent(content)
+                el.setInnerContent(escapeHTML(content).replaceAll("\n", "<br/>"), { html: true })
             }
         })
         .on('#post-stats td', {
             element(el) {
                 el.setInnerContent('[ from ')
-                el.append('<a target="_blank" href="/user.html?id=', { html: true, ContentOptions: 'after'})
+                el.append('<a target="_blank" title="' + status + '" href="/user.html?id=', { html: true, ContentOptions: 'after'})
                 el.append(author_id, { ContentOptions: 'after'})
                 el.append('">', { html: true, ContentOptions: 'after'})
                 el.append('~' + author, { ContentOptions: 'after'})
