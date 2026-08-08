@@ -1,4 +1,5 @@
 import { updatePageWithCookie, getJSONfromCookie } from "../cookie";
+import { returnCommentBody } from "../templates/comment/.js";
 import { returnPostBody } from "../templates/post/.js"
 
 export function escapeHTML(s) {
@@ -73,6 +74,29 @@ export async function onRequest(context) {
             }
 
             return new Response(html, {headers: {'Content-Type': 'text/html'}})
+        } else if (path.startsWith("/comments")) {
+            const url = request.url
+            const searchParams = new URLSearchParams(url)
+            const post_id = searchParams.get("post_id")
+
+            var commentsRes = await httpFetch('/posts/' + post_id + '/comments/', 'GET', null, 'json', null)
+            console.log(post_id)
+            var comments = commentsRes.comments
+            var html = '<head><link rel="stylesheet" type="text/css" href="/styles/index.css"></head><body leftmargin="100%">'
+            for (let i = 0; i < comments.length; i++) {
+                let comment = comments[i]
+                
+                html += await returnCommentBody(
+                    comment.id,
+                    comment.content,
+                    comment.author.profile.username,
+                    comment.author.id,
+                    comment.miscellaneous.creation_time * 1000
+                )
+            }
+            html += '</body>'
+
+            return new Response(html, {headers: {'Content-Type': 'text/html'}})
         } else if (path.startsWith("/auth")) {
             const url = request.url
             const searchParams = new URLSearchParams(url)
@@ -86,15 +110,20 @@ export async function onRequest(context) {
                     formData.append("email", json.email);
                     formData.append("password", json.password);
 
+                    const dataRes = await httpFetch('/data', 'GET', null, 'json')
+                    console.log(dataRes)
                     const loginRes = await httpFetch('/auth/login', 'POST', formData, 'json')
+                    console.log(loginRes)
                     var newCookie = `identif_string=${loginRes.id}||${loginRes.token}; Expires=${new Date(new Date().getTime() + 20000000).toUTCString()}; secure; HttpOnly; SameSite=Strict; Cache-Control=no-cache;`
                     
                     // Set cookie
                     const response = await fetch(assetUrl);
                     const newResponse = new Response(response.body, response);
+                    console.log(newResponse)
 
                     newResponse.headers.append("Set-Cookie", newCookie)
-                    return newResponse
+                    updatePageWithCookie(request, rewriter)
+                    return rewriter.transform(newResponse)
                 case 'logout':
                     var cookie = request.headers.get("Cookie")
                     if (cookie) {
@@ -130,6 +159,22 @@ export async function onRequest(context) {
                         return new Response("This page will redirect you to home.", {headers: {'Content-Type': 'text/html'}})
             }
 
+        } else if (path.startsWith("/postmessage")) {
+            var data = await request.text()
+            var json = Object.fromEntries(new URLSearchParams(data))
+
+            const url = request.url
+            const searchParams = new URLSearchParams(url)
+            const auth_token = searchParams.get("auth_token")
+            const post_id = searchParams.get("post_id")
+
+            const formData = new FormData();
+            formData.append("textarea", json.Message);
+            formData.append("csrf_token", auth_token);
+            formData.append("POST_ID", post_id)
+
+            const postMsgRes = await httpFetch('/posts/' + post_id + '/comment', 'POST', formData, 'json')
+            console.log(postMsgRes)
         } else if (path.startsWith("/")) {
             var usersRes = await httpFetch('/explore/users/popular/get', 'GET')
             var users = usersRes.users

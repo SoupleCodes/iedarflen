@@ -34,4 +34,3 @@ export async function returnPostBody(id, content, author, author_id, view_count,
         })
         .transform(response).text()
 }
-// ContentOptions

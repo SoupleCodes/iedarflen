@@ -7,6 +7,11 @@ export function getJSONfromCookie(c) {
 }
 
 export function updatePageWithCookie(req, rewriter) {
+    rewriter.on("body", {
+        element(el) {
+            el.append('<script>if(window.location.pathname.indexOf("auth")>-1){window.location="/"}</script>', { html: true, ContentOptions: 'after' })
+        }
+    })
     var cookie = req.headers.get("Cookie")
     if (cookie) {
         const { user_id, user_token } = getJSONfromCookie(cookie)
